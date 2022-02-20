@@ -56,7 +56,7 @@ function draw() {
       fill('purple');
       for (let j = 0; j < 20; j++) {
         for (let i = 0; i < 20; i++) {
-          arc(i*10, j*50, i+10, 10*j+100, 0, 2/PI);
+          arc(i*30, j*50, i+10, j+30, 0, PI-2/PI);
         }
       }
       break;
