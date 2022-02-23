@@ -15,34 +15,32 @@ function draw() {
   fill('black');
   rect(width / 2, height / 2, 200, 600);
 
+  // Timer
   timer++;
-  if (timer > 3*60) {
+  if (timer > 3 * 60) {
     timer = 0;
     state = (state + 1) % 3;
   }
 
-  //  Car
+  // Code for Car
   fill('blue');
-  rect(x, height-100, 100, 50);
-  x = x + velocity ;
+  rect(x, height - 100, 100, 50);
+  x = x + velocity;
   if (x > width) {
-    x = 0 ;
+    x = 0;
   }
 
   switch (state) {
-
     case 0: // Red light
       fill('red');
       ellipse(width / 2, height / 2 - 170, 150, 150);
       fill('grey');
       ellipse(width / 2, height / 2, 150, 150);
       ellipse(width / 2, height / 2 + 170, 150, 150);
-      if (x == width/2) {
+      if (x == width / 2) { // Stop in the middle
         velocity = 0;
       }
-
       break;
-
     case 1: // Green light
       fill('grey');
       ellipse(width / 2, height / 2 - 170, 150, 150);
@@ -61,12 +59,10 @@ function draw() {
       ellipse(width / 2, height / 2 + 170, 150, 150);
       velocity = 10;
       break;
-
   }
 }
 
 function mouseReleased() {
   state++;
   if (state > 2) state = 0;
-
 }
