@@ -88,6 +88,10 @@ function draw() {
     break;
 
     case 1:
+      text("Just one more...", width/2, 475);
+    break;
+
+    case 2:
       image(char, 0, 0, 500, 500);
       text("Enjoy your charcuterie board!", width/2, 475);
     break;
