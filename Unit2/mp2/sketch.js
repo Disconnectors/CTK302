@@ -3,7 +3,7 @@ var vol = 0;
 var approachingVol = 0;
 
 let state = 0;
-let theLoudestItGets = 0.2;
+let theLoudestItGets = 0.3;
 var ease = 0.1;
 
 let wineglass;
@@ -30,7 +30,7 @@ function draw() {
   approachingVol += (vol - approachingVol) * ease;
 
   textSize(15);
-  text("Have you ever wanted to break a wine glass with your singing?\n Well now you can!\n Click to reset.\n My Volume is currently: " + vol.toFixed(3), width/2, 20);
+  text("Have you ever wanted to break a wine glass with your singing?\n Well now you can!\n Click to start.\n My Volume is currently: " + vol.toFixed(3), width/2, 20);
   z = int(map(approachingVol, 0, theLoudestItGets, 0, 3));
 
   switch(z) {
