@@ -2,7 +2,6 @@ var mic;
 var vol = 0;
 var approachingVol = 0;
 
-let state = 0;
 let theLoudestItGets = 0.3;
 var ease = 0.1;
 
@@ -86,10 +85,7 @@ function draw() {
       text("Well done!", width / 2, 475);
       image(breakingglass, width / 2 - 150, 125, 300, 300);
       break;
-
   }
-
-
 }
 
 function touchStarted() {
