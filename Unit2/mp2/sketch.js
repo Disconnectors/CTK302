@@ -36,13 +36,14 @@ function draw() {
   z = int(map(approachingVol, 0, theLoudestItGets, 0, 3));
 
   switch (z) {
-
+    // When little to no volume, do nothing
     case 0:
       textSize(30);
       text("SING!", width/2, 110);
       image(wineglass, width / 2 - 150, 125, 300, 300);
       break;
 
+    // When a bit of volume is detected, shake
     case 1:
       translate(random(-5, 5), random(-5, 5));
       image(crackedwineglass, width / 2 - 150, 125, 300, 300);
@@ -60,7 +61,7 @@ function draw() {
       image(crackedwineglass, width / 2 - 150, 125, 300, 300);
       break;
 
-
+    // When volume is above certain level, show broken glass
     case 5:
       image(breakingglass, width / 2 - 150, 125, 300, 300);
       break;
@@ -94,7 +95,7 @@ function draw() {
 
     case 2:
       textSize(15);
-      image(char, 0, 0, 500, 500);
+      image(char, 0, 100, 500, 400);
       text("Enjoy your charcuterie board!", width/2, 475);
     break;
   }
