@@ -2,7 +2,7 @@ let cars = [];
 let bg;
 
 function preload() {
-    bg = loadImage('logs.jpg') ;
+  bg = loadImage('logs.jpg');
 }
 
 function setup() {
@@ -12,7 +12,7 @@ function setup() {
 
 function draw() {
   background(255);
-  image(bg, 175, 500, 200, 200) ;
+  image(bg, 175, 500, 200, 200);
   cars.push(new Car());
   for (let i = 0; i < cars.length; i++) {
     cars[i].display();
@@ -28,7 +28,7 @@ class Car {
   constructor() {
     this.pos = createVector(width / 2, height - 140);
     this.vel = createVector(random(-0.8, 0.8), random(-10, -1));
-    this.r = random(50, 200) ;
+    this.r = random(50, 200);
     this.g = 0; //random(255) ;
     this.b = 0; //random(255) ;
     this.a = random(200, 255);
