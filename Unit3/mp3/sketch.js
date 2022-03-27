@@ -24,13 +24,16 @@ function setup() {
   createCanvas(1000, 1000);
   noStroke();
   frogPos = createVector(width / 2, height - 80);
+  for (let i = 0; i < 5; i++) {
+    enemies.push(new Spawn());
+  }
 }
 
 function draw() {
   background('green');
 
   switch (state) {
-    case 0: // Welcome
+    case 0: // Welcome screen
       fill('red');
       textSize(50);
       textAlign(CENTER);
@@ -38,7 +41,7 @@ function draw() {
       image(frog, 400, 200, 200, 200 * frog.height / frog.width);
 
       break;
-    case 1: // Spawn enemies
+    case 1: // Game screen
       game();
 
       timer++;
@@ -47,13 +50,11 @@ function draw() {
         state = 3;
       }
 
-    for (let i = 0; i < 10; i++) {
-      enemies.push(new Spawn());
-    }
+
       for (let i = 0; i < enemies.length; i++) {
         enemies[i].display();
         enemies[i].move();
-        if (enemies[i].pos.x > 1000 && enemies[i].pos.x < 0 && enemies[i].pos.y < 0 && enemies[i].pos.y > 1000) {
+        if (enemies[i].pos.x > width || enemies[i].pos.x < 0 || enemies[i].pos.y < 0 || enemies[i].pos.y > width) {
           enemies.splice(i, 1);
         }
       }
@@ -62,17 +63,22 @@ function draw() {
 
     case 2: // Win
       background('blue');
+      checkForKeys();
       break;
     case 3: // Lose
       background('red');
+      checkForKeys();
       break;
   }
 }
 
 function game() {
   image(bg, 0, 0);
+  // Display score
 
-  for (let i = 0; i < enemies.length ; i++) {
+  text("Score:" + score, width / 2, height / 2);
+
+  for (let i = 0; i < enemies.length; i++) {
     enemies[i].display();
     enemies[i].move();
     if (enemies[i].pos.dist(frogPos) < 50) {
@@ -92,16 +98,19 @@ function checkForKeys() {
   if (keyIsDown(RIGHT_ARROW)) frogPos.x = frogPos.x + 5;
   if (keyIsDown(UP_ARROW)) frogPos.y = frogPos.y - 5;
   if (keyIsDown(DOWN_ARROW)) frogPos.y = frogPos.y + 5;
+  if (keyIsDown(82)) resetGame(); // Press R to reset the game
 }
 
 
-class Spawn { // CONSTRUCTOR
+class Spawn {
 
+  // Constructor
   constructor() {
     this.pos = createVector(random(width), random(height));
     this.vel = createVector(random(-5, 5), random(-5, 5));
   }
 
+  // Display method
   display() {
     if (score < 5) {
       image(flyimg, this.pos.x, this.pos.y);
@@ -114,6 +123,7 @@ class Spawn { // CONSTRUCTOR
     }
   }
 
+  // Move method
   move() {
     this.pos.add(this.vel);
     if (this.pos.x > width) this.pos.x = 0;
@@ -126,4 +136,10 @@ class Spawn { // CONSTRUCTOR
 function mouseReleased() {
   state++;
   if (state > 3) state = 0;
+}
+
+function resetGame() {
+  state = 0;
+  enemies = [];
+  score = 0;
 }
