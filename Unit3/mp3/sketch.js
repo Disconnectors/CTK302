@@ -24,7 +24,8 @@ function setup() {
   createCanvas(1000, 1000);
   noStroke();
   frogPos = createVector(width / 2, height - 80);
-  for (let i = 0; i < 5; i++) {
+
+  for (let i = 0; i < 20; i++) {
     enemies.push(new Spawn());
   }
 }
@@ -63,6 +64,7 @@ function draw() {
 
     case 2: // Win
       background('blue');
+      text("Victory! \n Your frog is well fed", width / 2, height / 2);
       checkForKeys();
       break;
     case 3: // Lose
@@ -76,7 +78,7 @@ function game() {
   image(bg, 0, 0);
   // Display score
 
-  text("Score:" + score, width / 2, height / 2);
+  text("Score:" + score, width / 2, 100);
 
   for (let i = 0; i < enemies.length; i++) {
     enemies[i].display();
@@ -112,7 +114,8 @@ class Spawn {
 
   // Display method
   display() {
-    if (score < 5) {
+
+    if (score <= 5) {
       image(flyimg, this.pos.x, this.pos.y);
     }
     if (score >= 5 && score < 10) {
