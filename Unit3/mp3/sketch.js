@@ -25,7 +25,7 @@ function setup() {
   noStroke();
   frogPos = createVector(width / 2, height - 80);
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 5; i++) {
     enemies.push(new Spawn());
   }
 }
@@ -51,7 +51,6 @@ function draw() {
         state = 3;
       }
 
-
       for (let i = 0; i < enemies.length; i++) {
         enemies[i].display();
         enemies[i].move();
@@ -69,6 +68,8 @@ function draw() {
       break;
     case 3: // Lose
       background('red');
+      fill('green');
+      text("Defeat \n Press R to try again", width / 2, height / 2);
       checkForKeys();
       break;
   }
