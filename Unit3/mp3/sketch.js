@@ -6,6 +6,10 @@ let flyimg;
 let spiderimg;
 let cricketimg;
 let bg;
+let winimg;
+let sadfrog;
+let music;
+let frogsound;
 
 let state = 0;
 let score = 0;
@@ -18,14 +22,17 @@ function preload() {
   cricketimg = loadImage("assets/cricket.svg");
   frog = loadImage("assets/frog.png");
   bg = loadImage("assets/bg.png");
+  winimg = loadImage("assets/win.png");
+  sadfrog = loadImage("assets/sadfrog.png");
+  music = loadSound("assets/music.mp3");
+  frogsound = loadSound("assets/frogsound.mp3");
 }
 
 function setup() {
   createCanvas(1000, 1000);
   noStroke();
   frogPos = createVector(width / 2, height - 80);
-
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 20; i++) {
     enemies.push(new Spawn());
   }
 }
@@ -34,21 +41,26 @@ function draw() {
   background('green');
 
   switch (state) {
-    case 0: // Welcome screen
+    case 0:
+      music.loop();
+      state = 1;
+      break;
+
+    case 1: // Welcome screen
       fill('red');
       textSize(50);
       textAlign(CENTER);
-      text("FROG COLLECTOR \n WELCOME! \n CLICK TO START", width / 2, height / 2);
+      text("FROG COLLECTOR \n WELCOME! \n Click to start!", width / 2, height / 2);
       image(frog, 400, 200, 200, 200 * frog.height / frog.width);
-
+      checkForKeys();
       break;
-    case 1: // Game screen
+    case 2: // Game screen
       game();
 
       timer++;
       if (timer > maxTimer * 60) {
         timer = 0;
-        state = 3;
+        state = 4;
       }
 
       for (let i = 0; i < enemies.length; i++) {
@@ -61,15 +73,15 @@ function draw() {
 
       break;
 
-    case 2: // Win
-      background('blue');
+    case 3: // Win
+      image(winimg, 0, 0, 1000, 1000);
       text("Victory! \n Your frog is well fed", width / 2, height / 2);
       checkForKeys();
       break;
-    case 3: // Lose
-      background('red');
-      fill('green');
-      text("Defeat \n Press R to try again", width / 2, height / 2);
+    case 4: // Lose
+      image(sadfrog, 250, 0, 500, 500);
+      fill('blue');
+      text("Defeat \n Press R to try again", width / 2, height - 400);
       checkForKeys();
       break;
   }
@@ -87,10 +99,11 @@ function game() {
     if (enemies[i].pos.dist(frogPos) < 50) {
       enemies.splice(i, 1);
       score++;
+      frogsound.play();
     }
   }
   if (score == 20) {
-    state = 2;
+    state = 3;
   }
   image(frog, frogPos.x, frogPos.y, 100, 100 * frog.height / frog.width);
   checkForKeys();
@@ -117,10 +130,10 @@ class Spawn {
   display() {
 
     if (score <= 5) {
-      image(flyimg, this.pos.x, this.pos.y);
+      image(flyimg, this.pos.x, this.pos.y, 100, 100);
     }
     if (score >= 5 && score < 10) {
-      image(spiderimg, this.pos.x, this.pos.y);
+      image(spiderimg, this.pos.x, this.pos.y, 75, 75);
     }
     if (score >= 10) {
       image(cricketimg, this.pos.x, this.pos.y);
@@ -139,11 +152,16 @@ class Spawn {
 
 function mouseReleased() {
   state++;
-  if (state > 3) state = 0;
+  if (state > 4) state = 0;
 }
 
 function resetGame() {
-  state = 0;
   enemies = [];
+  state = 0;
+  timer = 0;
   score = 0;
+  for (let i = 0; i < 20; i++) {
+    enemies.push(new Spawn());
+  }
+  music.pause();
 }
