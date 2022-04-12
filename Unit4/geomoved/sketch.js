@@ -7,7 +7,7 @@ var locationData;
 
 function preload() {
   locationData = getCurrentPosition();
-  font1 = loadFont("assets/Mohave-Light.ttf");
+
 }
 
 function setup() {
