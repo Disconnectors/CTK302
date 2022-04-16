@@ -1,15 +1,16 @@
 var bubbles = [];
 let url = "";
+let sportimg;
 
 function setup() {
   // let key = "1xG5lzBtJV3gK61ZE_qdku3ms9-pCJqwl0T8RVHI11m0"; // this is KEY of the URL from the sheet
   let key = "1z3JlaLmqF0DavuQdzyhjllJ5NWwAQjwk5kmOs8vbh4o";
   url = "https://opensheet.vercel.app/" + key + "/Form+Responses+1"; // here I'm making the string for loadJSON.
-
+  sportimg = loadImage("sports.jpg");
   loadJSON(url, gotData);
 
   // Regular setup code we usually have
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(840, 360);
   textAlign(CENTER);
   ellipseMode(CENTER);
   rectMode(CENTER);
@@ -32,7 +33,7 @@ function gotData(data) {
 }
 
 function draw() {
-  background("blue");
+  background(sportimg);
 
   // // iterate through the bubbles and display the objects!
   for (let i = 0; i < bubbles.length; i++) {
@@ -52,10 +53,11 @@ class Bubble {
   }
 
   display() {
-    stroke("red");
-    noFill();
-    ellipse(this.pos.x, this.pos.y+10, 120, 120);
+    stroke("black");
     fill("white");
+    ellipse(this.pos.x, this.pos.y+10, 120, 120);
+    fill("black");
+    textSize(14);
     text(
       this.name + " likes \n" + this.sport + " and is in \n " + this.major,
       this.pos.x,

@@ -6,14 +6,14 @@ let bunnyImage;
 let xPosition = 0;
 let yPosition = 0;
 let x = 0, y = 0, z = 0 ; // accelerometer data
-
+let font1;
 
 function setup() {
 
   createCanvas(windowWidth, windowHeight);
 
 
-
+  font1 = loadFont("assets/UFO.ttf");
   bunnyImage = loadImage("assets/ufo.png");
   imageMode(CENTER);
   rectMode(CENTER);
@@ -23,7 +23,9 @@ function setup() {
 function draw() {
 
   background('#c6f5ff'); // light blue
-
+  textFont(font1);
+  textSize(46);
+  text("Rotate the ship!", width / 2, 10)
   // the map command !!!!
   // takes your variable and maps it from range 1 to range 2
   // map(yourVar, range1_x, range1_y, range2_x, range2_y) ;

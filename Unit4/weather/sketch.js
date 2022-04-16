@@ -8,10 +8,12 @@ let windspeed = 0;
 let temperature = 0;
 let humidity = 0;
 let description = '' ;
+let oakvilleImg;
+
 
 function setup() {
   createCanvas(400, 400);
-
+  oakvilleImg = loadImage("oakville.png");
   // HERE is the call to get the weather. We build the string first.
 
   let myCityString =
@@ -55,6 +57,7 @@ function draw() {
       text("Temp is: " + temperature, 20, 60);
       text("Humidity is: " + humidity, 20, 80);
       text(description, 20, 100);
+      image(oakvilleImg, 100, 10, 300, 200);
 
       // cloud
       fill("white");
