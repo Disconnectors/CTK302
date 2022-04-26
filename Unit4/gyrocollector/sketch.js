@@ -14,12 +14,22 @@ var duck;
 var egg2;
 var font1;
 
+var snail;
+var grape;
+var worm;
+var roach;
+
 var state = 0;
+var imgState = 0;
 
 function preload() {
   duck = loadImage("assets/duckbird.png");
   egg2 = loadImage("assets/eggbird2.png");
   font1 = loadFont("assets/boogaloo.ttf");
+  snail = loadImage("assets/snail.png");
+  grape = loadImage("assets/grapes.png");
+  worm = loadImage("assets/worm.png");
+  roach = loadImage("assets/roach.png");
 }
 
 function setup() {
@@ -32,7 +42,7 @@ function setup() {
   gamma = 0;
 
   // spawn a bunch of cars
-  for (var i = 0; i < 40; i++) {
+  for (var i = 0; i < 5; i++) {
     cars.push(new Car());
   }
 
@@ -174,12 +184,8 @@ function Car() {
 
   // methods
   this.display = function() {
-
-    // maybe use an image here instead!
-    fill(this.r, this.g, this.b, this.a);
-    ellipse(this.pos.x - 50, this.pos.y, 50, 50);
-    ellipse(this.pos.x + 50, this.pos.y, 50, 50);
-    rect(this.pos.x + 17, this.pos.y - 30, 80, 60);
+    snail.resize(150, 0);
+    image(snail, this.pos.x, this.pos.y);
 
   }
 
