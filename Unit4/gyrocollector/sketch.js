@@ -8,11 +8,18 @@ var yPosition = 0;
 
 var cars = [];
 var frogPos;
+var duckSize = 0;
+
 var duck;
+var egg2;
+var font1;
+
 var state = 0;
 
 function preload() {
-  duck = loadImage("duckbird.png");
+  duck = loadImage("assets/duckbird.png");
+  egg2 = loadImage("assets/eggbird2.png");
+  font1 = loadFont("assets/boogaloo.ttf");
 }
 
 function setup() {
@@ -46,9 +53,9 @@ function draw() {
   switch (state) {
 
     case 0:
-    //textFont(font1);
+    textFont(font1);
     background('green');
-    //image(egg2, 450, 150, 500, 500);
+    image(egg2, 450, 150, 500, 500);
     fill('yellow');
     textSize(64);
     text("DuckBird", 550, 100);
@@ -57,9 +64,13 @@ function draw() {
     text("Avoid larger animals!", 100, 300);
     text("Tap to Start", 100, 400);
     fill('yellow');
-    text("Chirp, Chirp, Quack! ", 900, 400);
+    text("Chirp, Chirp, Quack! ", 300, 400);
     fill('red');
-    text("(Devour them all!)",  900, 450);
+    text("(Devour them all!)",  300, 450);
+
+    if (mouseIsPressed === true) {
+      state = 1;
+    }
 
     break;
 
@@ -149,9 +160,6 @@ window.addEventListener('devicemotion', function(e) {
   z = e.acceleration.z;
 });
 
-function mousePressed() {
-  state = 1;
-}
 
 // car class!!
 function Car() {
