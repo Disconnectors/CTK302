@@ -58,7 +58,7 @@ function draw() {
   // draw the FROG
   // image(bunnyImage, 0, 0, 500, 500);
 
-  image(duck, 0, 80, 80);
+  image(duck, 0, 0);
   pop();
 
 
