@@ -97,8 +97,8 @@ function draw() {
       push(); // before you use translate, rotate, or scale commands, push and then pop after
       translate(xPosition, yPosition); // move everything over by x, y
 
-      image(duck, 0, 0);
-      duck.resize(150, 0);
+      image(duck, 0, 0,);
+      duck.resize(150 + duckSize/10, 0);
       pop();
 
 
@@ -123,7 +123,7 @@ function draw() {
         }
       }
 
-      if (duckSize > 1000) {
+      if (duckSize >= 1000) {
         state = 2;
       }
 
@@ -157,7 +157,7 @@ function draw() {
 function deviceShaken() {
   // re-spawn cars
   cars = []; // clear the array first
-  for (var i = 0; i < 40; i++) {
+  for (var i = 0; i < 5; i++) {
     cars.push(new Car());
   }
 }
@@ -200,7 +200,13 @@ function Car() {
     }
 
     if(duckSize >= 250 && duckSize < 500) {
-      image(worm, this.epos.x, this.epos.y, this.s, this.s);
+      image(worm, this.pos.x, this.pos.y, this.s, this.s);
+    }
+    if(duckSize >= 500 && duckSize < 750) {
+      image(grape, this.pos.x, this.pos.y, this.s, this.s);
+    }
+    if(duckSize >= 750 && duckSize < 1000) {
+      image(roach, this.pos.x, this.pos.y, this.s, this.s);
     }
     //image(grape, this.pos.x, this.pos.y, this.s, this.s);
     //image(roach, this.pos.x, this.pos.y, this.s, this.s);
