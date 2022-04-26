@@ -21,6 +21,8 @@ var roach;
 
 var state = 0;
 var imgState = 0;
+var timer = 0;
+var maxTimer = 5;
 
 function preload() {
   duck = loadImage("assets/duckbird.png");
@@ -42,8 +44,12 @@ function setup() {
   gamma = 0;
 
   // spawn a bunch of cars
-  for (var i = 0; i < 5; i++) {
-    cars.push(new Car());
+  if (timer > maxTimer * 60) {
+    for (var i = 0; i < 5; i++) {
+      cars.push(new Car());
+      timer = 0;
+
+    }
   }
 
   // initialize the frog's position
