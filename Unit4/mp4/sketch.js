@@ -2,13 +2,7 @@ let cars = []; // declare/intialize an array
 let enemies = [];
 let duckPos; //variable that contains X and Y
 let state = 0;
-let timer = 0;
-let maxCars = 5;
-let maxTimer = 5;
-let score = 0;
-let debug = true;
 let duckSize = 50;
-let sizeInc = 0;
 
 //let song1;
 function preload() {
@@ -62,17 +56,12 @@ function draw() {
 
     case 1:
       game();
-      timer++;
+
       if (duckSize > 1000) {
 
         state = 2;
       }
-      //timer++;
 
-    //  if (timer > maxTimer * 60) {
-      //  timer = 0;
-      //  state = 3;
-      //}
       break;
 
     case 2:
@@ -94,7 +83,7 @@ function draw() {
 
 function game() {
   background("green");
-  if (timer > maxTimer * 60) {
+  if (duckSize > 700) {
     enemies.push(new Car(4));
     cars.push(new Car(3));
     timer = 0;
@@ -112,7 +101,6 @@ function game() {
     if (enemies[i].pos.dist(duckPos) < duckSize/2) {
       if (enemies[i].size < duckSize) {
         enemies.splice(i, 1);
-        //duckSize += enemies[i].sizeInc;
           duckSize += 50;
         sound.play();
       } else {
@@ -129,7 +117,6 @@ function game() {
       if (cars[i].size < duckSize) {
         cars.splice(i, 1);
         duckSize += 10;
-        //duckSize += cars[i].sizeInc;
         sound.play();
       } else {
         state = 3;
@@ -165,7 +152,6 @@ class Car {
     this.pos = createVector(random(width), random(height)); // initialize your attributes here
     //this.v = createVector(random(1, 10), random(1, 10));
 
-    this.sizeInc = 0;
     this.image = snail;
     this.type = type;
     switch (this.type) {
@@ -174,7 +160,6 @@ class Car {
         this.image = snail;
         this.v = createVector(random(1, 2), random(0));
         this.size = random(25, 75);
-        //this.sizeInc = this.size/2;
         break;
       }
 
@@ -182,7 +167,6 @@ class Car {
         this.image = worm;
         this.v = createVector(random(3, 4), random(0));
         this.size = random(10, 11);
-        //this.sizeInc = this.size/4;
         break;
       }
 
@@ -190,7 +174,6 @@ class Car {
         this.image = grape;
         this.v = createVector(0,0);
         this.size = random(10, 12);
-        //this.sizeInc = this.size/2;
         break;
       }
 
@@ -198,7 +181,6 @@ class Car {
         this.image = roach;
         this.v = createVector(random(5, 10), random(0));
         this.size = random(10, 40);
-        //this.sizeInc = this.size/2;
         break;
       }
 
@@ -206,7 +188,6 @@ class Car {
         this.image = raccoon;
         this.v = createVector(random(10, 15), random(0));
         this.size = random(150, 200);
-        //this.sizeInc = this.size/2;
         break;
       }
     }

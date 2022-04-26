@@ -6,10 +6,13 @@ var z = 0;
 var xPosition = 0;
 var yPosition = 0;
 
-// var bunnyImage;
 var cars = [];
 var frogPos;
+var duck;
 
+function preload() {
+  duck = loadImage("duckbird.jpg");
+}
 
 function setup() {
 
@@ -54,8 +57,8 @@ function draw() {
 
   // draw the FROG
   // image(bunnyImage, 0, 0, 500, 500);
-  fill('green');
-  ellipse(0, 0, 80, 80);
+
+  image(duck, 0, 80, 80);
   pop();
 
 
@@ -78,9 +81,6 @@ function draw() {
   textAlign(CENTER);
   text("your words or image here!", width / 2, 600, windowWidth - 200, windowHeight - 200);
 
-
-  // Debugging information -- take this out when you're ready for production!
-  // Just a bunch of text commands to display data coming in from addEventListeners
   textAlign(LEFT);
   textSize(20);
   fill('black');
