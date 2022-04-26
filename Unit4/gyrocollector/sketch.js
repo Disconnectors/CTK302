@@ -192,6 +192,7 @@ function Car() {
   this.a = random(255); // alpha opacity value for fill!
   this.s = random(50,100);
 
+
   // methods
   this.display = function() {
     if(duckSize >= 0 && duckSize < 250) {
@@ -199,7 +200,7 @@ function Car() {
     }
 
     if(duckSize >= 250 && duckSize < 500) {
-      image(worm, this.pos.x, this.pos.y, this.s, this.s);
+      image(worm, this.epos.x, this.epos.y, this.s, this.s);
     }
     //image(grape, this.pos.x, this.pos.y, this.s, this.s);
     //image(roach, this.pos.x, this.pos.y, this.s, this.s);
