@@ -9,6 +9,7 @@ var yPosition = 0;
 var cars = [];
 var frogPos;
 var duck;
+var state = 0;
 
 function preload() {
   duck = loadImage("duckbird.png");
@@ -42,34 +43,69 @@ function draw() {
 
   background('#c6f5ff'); // light blue
 
-  // the map command !!!!
-  // takes your variable and maps it from range 1 to range 2
-  // map(yourVar, range1_x, range1_y, range2_x, range2_y) ;
-  xPosition = map(gamma, -18, 18, 0, width);
-  yPosition = map(beta, 25, 45, 0, height);
+  switch (state) {
+
+    case 0:
+    //textFont(font1);
+    background('green');
+    //image(egg2, 450, 150, 500, 500);
+    fill('yellow');
+    textSize(64);
+    text("DuckBird", 550, 100);
+    textSize(36);
+    fill('blue')
+    text("Avoid larger animals!", 100, 300);
+    text("Tap to Start", 100, 400);
+    fill('yellow');
+    text("Chirp, Chirp, Quack! ", 900, 400);
+    fill('red');
+    text("(Devour them all!)",  900, 450);
+
+    break;
+
+    case 1:
+      // the map command !!!!
+      // takes your variable and maps it from range 1 to range 2
+      // map(yourVar, range1_x, range1_y, range2_x, range2_y) ;
+      xPosition = map(gamma, -18, 18, 0, width);
+      yPosition = map(beta, 25, 45, 0, height);
 
 
-  // move the frog around the screen
-  push(); // before you use translate, rotate, or scale commands, push and then pop after
-  translate(xPosition, yPosition); // move everything over by x, y
+      // move the frog around the screen
+      push(); // before you use translate, rotate, or scale commands, push and then pop after
+      translate(xPosition, yPosition); // move everything over by x, y
 
-  image(duck, 0, 0);
-  duck.resize(150, 0);
-  pop();
+      image(duck, 0, 0);
+      duck.resize(150, 0);
+      pop();
 
 
-  // update the frog's position using the accelerometer data
-  frogPos.x = xPosition;
-  frogPos.y = yPosition;
+      // update the frog's position using the accelerometer data
+      frogPos.x = xPosition;
+      frogPos.y = yPosition;
 
-  // iterate through the car loop to move them and see if we need to delete cars
-  for (var i = 0; i < cars.length; i++) {
-    cars[i].display();
-    cars[i].drive();
-    if (cars[i].pos.dist(frogPos) < 50) {
-      cars.splice(i, 1);
-    }
+      // iterate through the car loop to move them and see if we need to delete cars
+      for (var i = 0; i < cars.length; i++) {
+        cars[i].display();
+        cars[i].drive();
+        if (cars[i].pos.dist(frogPos) < 50) {
+          cars.splice(i, 1);
+        }
+      }
+
+      if (duckSize > 1000) {
+        state = 2;
+      }
+
+    break;
+
+    case 2:
+      background('green');
+      fill('blue');
+      text("DuckBird has outgrown the ecosystem and will soon conquer mankind!", 200, 200);
+    break;
   }
+
 
   // MORE DECORATIONS - write that pretty ATK type on top.
   // textAlign(LEFT);
