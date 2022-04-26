@@ -23,7 +23,6 @@ function setup() {
   beta = 0;
   gamma = 0;
 
-
   // spawn a bunch of cars
   for (var i = 0; i < 40; i++) {
     cars.push(new Car());
@@ -53,10 +52,8 @@ function draw() {
   // move the frog around the screen
   push(); // before you use translate, rotate, or scale commands, push and then pop after
   translate(xPosition, yPosition); // move everything over by x, y
-  //  rotate(radians(alpha)); // using alpha in here so it doesn't feel bad
+  rotate(radians(alpha)); // using alpha in here so it doesn't feel bad
 
-  // draw the FROG
-  // image(bunnyImage, 0, 0, 500, 500);
   image(duck, 0, 0);
   duck.resize(150, 0);
   pop();
@@ -76,20 +73,20 @@ function draw() {
   }
 
   // MORE DECORATIONS - write that pretty ATK type on top.
-  textAlign(LEFT);
-  textSize(20);
-  fill('black');
-  text("orientation data:", 25, 25);
-  textSize(15);
-  text("alpha: " + alpha, 25, 50);
-  text("beta: " + beta, 25, 70);
-  text("gamma: " + gamma, 25, 90);
-  textSize(20);
-  text("acceleration data:", 25, 125);
-  textSize(15);
-  text("x = " + x, 25, 150); // .toFixed means just show (x) decimal places
-  text("y = " + y, 25, 170);
-  text("z = " + z, 25, 190);
+  // textAlign(LEFT);
+  // textSize(20);
+  // fill('black');
+  // text("orientation data:", 25, 25);
+  // textSize(15);
+  // text("alpha: " + alpha, 25, 50);
+  // text("beta: " + beta, 25, 70);
+  // text("gamma: " + gamma, 25, 90);
+  // textSize(20);
+  // text("acceleration data:", 25, 125);
+  // textSize(15);
+  // text("x = " + x, 25, 150); // .toFixed means just show (x) decimal places
+  // text("y = " + y, 25, 170);
+  // text("z = " + z, 25, 190);
 }
 
 function deviceShaken() {
