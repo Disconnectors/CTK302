@@ -44,13 +44,7 @@ function setup() {
   gamma = 0;
 
   // spawn a bunch of cars
-  if (timer > maxTimer * 60) {
-    for (var i = 0; i < 5; i++) {
-      cars.push(new Car());
-      timer = 0;
 
-    }
-  }
 
   // initialize the frog's position
   frogPos = createVector(width / 2, height - 80);
@@ -97,6 +91,7 @@ function draw() {
       xPosition = map(gamma, -18, 18, 0, width);
       yPosition = map(beta, 25, 45, 0, height);
       text(duckSize, width / 2, 200);
+      text("Timer: " + timer, width / 2, 300);
 
       // move the frog around the screen
       push(); // before you use translate, rotate, or scale commands, push and then pop after
@@ -118,6 +113,13 @@ function draw() {
         if (cars[i].pos.dist(frogPos) < 50) {
           cars.splice(i, 1);
           duckSize+=75;
+        }
+      }
+      timer++;
+      if (timer > maxTimer * 10) {
+        for (var i = 0; i < 1; i++) {
+          cars.push(new Car());
+          timer = 0;
         }
       }
 
@@ -160,6 +162,7 @@ function deviceShaken() {
   }
 }
 
+
 // HERE'S THE STUFF YOU NEED FOR READING IN DATA!!!
 
 // Read in accelerometer data
@@ -181,7 +184,7 @@ window.addEventListener('devicemotion', function(e) {
 // car class!!
 function Car() {
   // attributes
-  this.pos = createVector(100, 100);
+  this.pos = createVector(random(0, width), random(0, height));
   this.vel = createVector(random(-5, 5), random(-5, 5));
   this.r = random(255);
   this.g = random(255);
