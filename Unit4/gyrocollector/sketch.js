@@ -57,8 +57,8 @@ function draw() {
 
   // draw the FROG
   // image(bunnyImage, 0, 0, 500, 500);
-
   image(duck, 0, 0);
+  duck.resize(150, 0);
   pop();
 
 
@@ -76,11 +76,6 @@ function draw() {
   }
 
   // MORE DECORATIONS - write that pretty ATK type on top.
-  fill('white');
-  textSize(40);
-  textAlign(CENTER);
-  text("your words or image here!", width / 2, 600, windowWidth - 200, windowHeight - 200);
-
   textAlign(LEFT);
   textSize(20);
   fill('black');
