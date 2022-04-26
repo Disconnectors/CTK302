@@ -181,12 +181,19 @@ function Car() {
   this.g = random(255);
   this.b = random(255);
   this.a = random(255); // alpha opacity value for fill!
+  this.s = random(50,100);
 
   // methods
   this.display = function() {
-    snail.resize(150, 0);
-    image(snail, this.pos.x, this.pos.y);
+    if(duckSize >= 0 && duckSize < 250) {
+      image(snail, this.pos.x, this.pos.y, this.s, this.s);
+    }
 
+    if(duckSize >= 250 && duckSize < 500) {
+      image(worm, this.pos.x, this.pos.y, this.s, this.s);
+    }
+    //image(grape, this.pos.x, this.pos.y, this.s, this.s);
+    //image(roach, this.pos.x, this.pos.y, this.s, this.s);
   }
 
   this.drive = function() {
