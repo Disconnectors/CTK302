@@ -52,7 +52,6 @@ function draw() {
   // move the frog around the screen
   push(); // before you use translate, rotate, or scale commands, push and then pop after
   translate(xPosition, yPosition); // move everything over by x, y
-  rotate(radians(alpha)); // using alpha in here so it doesn't feel bad
 
   image(duck, 0, 0);
   duck.resize(150, 0);
