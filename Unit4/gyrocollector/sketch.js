@@ -11,7 +11,7 @@ var frogPos;
 var duck;
 
 function preload() {
-  duck = loadImage("duckbird.jpg");
+  duck = loadImage("duckbird.png");
 }
 
 function setup() {
