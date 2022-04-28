@@ -135,6 +135,9 @@ function draw() {
       text("DuckBird has outgrown the ecosystem and will soon conquer mankind!", 200, 200);
       if (mouseIsPressed === true) {
         state = 0;
+        cars = [];
+        duckSize = 0;
+        imgState = 0;
       }
     break;
   }
