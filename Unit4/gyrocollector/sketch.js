@@ -132,7 +132,7 @@ function draw() {
     case 2:
       background('green');
       fill('blue');
-      text("DuckBird has outgrown the ecosystem and will soon conquer mankind!", 200, 200);
+      text("DuckBird has outgrown the ecosystem \n and will soon conquer mankind!", 50, 200);
       if (mouseIsPressed === true) {
         state = 0;
         cars = [];
@@ -141,23 +141,6 @@ function draw() {
       }
     break;
   }
-
-
-  // MORE DECORATIONS - write that pretty ATK type on top.
-  // textAlign(LEFT);
-  // textSize(20);
-  // fill('black');
-  // text("orientation data:", 25, 25);
-  // textSize(15);
-  // text("alpha: " + alpha, 25, 50);
-  // text("beta: " + beta, 25, 70);
-  // text("gamma: " + gamma, 25, 90);
-  // textSize(20);
-  // text("acceleration data:", 25, 125);
-  // textSize(15);
-  // text("x = " + x, 25, 150); // .toFixed means just show (x) decimal places
-  // text("y = " + y, 25, 170);
-  // text("z = " + z, 25, 190);
 }
 
 function deviceShaken() {
@@ -192,10 +175,6 @@ function Car() {
   // attributes
   this.pos = createVector(random(0, width), random(0, height));
   this.vel = createVector(random(-5, 5), random(-5, 5));
-  this.r = random(255);
-  this.g = random(255);
-  this.b = random(255);
-  this.a = random(255); // alpha opacity value for fill!
   this.s = random(50,100);
 
 
@@ -214,8 +193,6 @@ function Car() {
     if(duckSize >= 750 && duckSize < 1000) {
       image(roach, this.pos.x, this.pos.y, this.s, this.s);
     }
-    //image(grape, this.pos.x, this.pos.y, this.s, this.s);
-    //image(roach, this.pos.x, this.pos.y, this.s, this.s);
   }
 
   this.drive = function() {
