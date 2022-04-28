@@ -161,7 +161,6 @@ function deviceShaken() {
   // re-spawn cars
   cars = []; // clear the array first
   state = 0;
-  }
 }
 
 
