@@ -160,6 +160,8 @@ function draw() {
 function deviceShaken() {
   // re-spawn cars
   cars = []; // clear the array first
+  duckSize = 0;
+  imgState = 0;
   state = 0;
 }
 
