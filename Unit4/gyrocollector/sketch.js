@@ -157,8 +157,7 @@ function draw() {
 function deviceShaken() {
   // re-spawn cars
   cars = []; // clear the array first
-  for (var i = 0; i < 5; i++) {
-    cars.push(new Car());
+  state = 0;
   }
 }
 
