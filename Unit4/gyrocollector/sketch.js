@@ -133,6 +133,9 @@ function draw() {
       background('green');
       fill('blue');
       text("DuckBird has outgrown the ecosystem and will soon conquer mankind!", 200, 200);
+      if (mouseIsPressed === true) {
+        state = 0;
+      }
     break;
   }
 
